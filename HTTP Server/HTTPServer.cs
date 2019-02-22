@@ -14,7 +14,7 @@ namespace HTTP_Server
         public const string MSG_DIR = "/root/msg"; //Message Directory
         public const string WEB_DIR = "/root/web"; //Web Directory
         public const string VERSION = "HTTP/1.1"; //Server version
-        public const string NAME = "DXSW HTTP Server v1.0"; //Server Name (Apache, Nigix, C#)
+        public const string NAME = "DXSW HTTP Server 1.0"; //Server Name (Apache, Nigix, C#)
         private bool running = false; //is the server running
         private TcpListener listener;
 
