@@ -94,4 +94,7 @@
     <Content Include="root\web\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(SolutionDir)\HTTP Server\wwwroot\root" "$(TargetDir)root" /Y /E</PostBuildEvent>
+  </PropertyGroup>
 </Project>
