@@ -21,7 +21,7 @@ namespace HTTP_Server
             if(String.IsNullOrEmpty(request))
                 return null;
 
-            String[] tokens = request.Split(' ');
+            String[] tokens = request.Split(' ', '\n'); //FIXME
             string type = tokens[0];
             string url = tokens[1];
             string host = tokens[4];

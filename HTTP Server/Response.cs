@@ -36,39 +36,30 @@ namespace HTTP_Server
             
             string file = Environment.CurrentDirectory + HTTPServer.MSG_DIR + "/" + "400.html";
             FileInfo fi = new FileInfo(file);
-            FileStream fs = fi.OpenRead();
-            BinaryReader reader = new BinaryReader(fs);
-            Byte[] d = new Byte[fs.Length];
-            reader.Read(d, 0, d.Length);
-            fs.Close();
+            FileHandler dat = new FileHandler(fi);
+            byte[] d = dat.Parse();
 
-            return new Response("400 Bad Request", "text/html", d);
+            return new Response("400 Bad Request", dat.MINE, d);
         }
         private static Response MakeMethodNotAllowed()
         {
             
             string file = Environment.CurrentDirectory + HTTPServer.MSG_DIR + "/" + "405.html";
             FileInfo fi = new FileInfo(file);
-            FileStream fs = fi.OpenRead();
-            BinaryReader reader = new BinaryReader(fs);
-            Byte[] d = new Byte[fs.Length];
-            reader.Read(d, 0, d.Length);
-            fs.Close();
+            FileHandler dat = new FileHandler(fi);
+            byte[] d = dat.Parse();
 
-            return new Response("405 Method Not Allowed", "text/html", d);
+            return new Response("405 Method Not Allowed", dat.MINE, d);
         }
         private static Response MakePageNotFound()
         {
             
             string file = Environment.CurrentDirectory + HTTPServer.MSG_DIR + "/" + "404.html";
             FileInfo fi = new FileInfo(file);
-            FileStream fs = fi.OpenRead();
-            BinaryReader reader = new BinaryReader(fs);
-            Byte[] d = new Byte[fs.Length];
-            reader.Read(d, 0, d.Length);
-            fs.Close();
+            FileHandler dat = new FileHandler(fi);
+            byte[] d = dat.Parse();
 
-            return new Response("404 Page Not Found", "text/html", d);
+            return new Response("404 Page Not Found", dat.MINE, d);
         }
         
         private static Response MakeNormalResponse(Request request, bool NotFound)
@@ -111,12 +102,9 @@ namespace HTTP_Server
 
         private static Response MakeFromFile(FileInfo f)
         {
-            FileStream fs = f.OpenRead();
-            BinaryReader reader = new BinaryReader(fs);
-            Byte[] d = new Byte[fs.Length];
-            reader.Read(d, 0, d.Length);
-            fs.Close();
-            return new Response("200 OK", "text/html", d);
+            FileHandler file = new FileHandler(f);
+            byte[] d = file.Parse();
+            return new Response("200 OK", file.MINE, d);
         }
 
         public void Post(NetworkStream stream)
