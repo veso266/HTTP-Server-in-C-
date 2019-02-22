@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="external\MimeTypes\MimeTypeMap.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="HTTPServer.cs" />
     <Compile Include="Program.cs" />
@@ -81,6 +82,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="external\MimeTypes\Author.txt" />
     <Content Include="root\msg\404.html" />
     <Content Include="root\msg\include\bottom.html" />
     <Content Include="root\msg\include\spacer.html" />

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MimeTypes;
 
 namespace HTTP_Server
 {
@@ -18,6 +15,7 @@ namespace HTTP_Server
         }
         public byte[] Parse()
         {
+            MINE = MimeTypeMap.GetMimeType(f.Extension); //get MINE TYPE
             FileStream fs = f.OpenRead();
             BinaryReader reader = new BinaryReader(fs);
             Byte[] d = new Byte[fs.Length];
